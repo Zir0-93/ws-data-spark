@@ -9,7 +9,7 @@
 Then Mapping `M` for a given POI can be defined as:
 
 ```
-M = -10 + (e^(-Ad + 2.3) + (R^(1/6))/2) + (Sdd^(1/3))/2)
+M = -10 + e^(-Ad + 2.3) + ((R^(1/6))/2) + ((Sdd^(1/3))/2)
 ```
 
 Where M is the mapping for a given POI. This model is meant designed to focus on activity that is close to the POI:
