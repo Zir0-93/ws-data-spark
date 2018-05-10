@@ -24,7 +24,3 @@ higher the amount of requests, the higher the score. This is represented by the 
 3) Lastly, the average distance could be low, but the number of request could be very large, and the standard deviation could be large
 as well, which would mean there would still be a large amount of activity close to the POI. To capture this, we use the standard deviation to come up with a
 value between 0 - 5 (assuming the maximum standard deviation is 1000 km) with the following component, `(Sdd^(1/3))/2`.
-
-Part ii)
-
-Not sure if this question is asking about POI's in general or the ones included in the data file. 
