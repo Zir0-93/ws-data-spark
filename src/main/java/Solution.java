@@ -31,7 +31,7 @@ public class Solution {
 
         // Problem 1
         dataset = new LabelledRequestLogDataSet(spark, dataset, new File("/tmp/data/POIList.csv"));
-        File labelledFile = new File("tmp/data/Labelled.csv/");
+        File labelledFile = new File("/tmp/data/Labelled.csv/");
         if (labelledFile.exists()) {
             FileUtils.deleteDirectory(labelledFile);
         }
@@ -39,7 +39,7 @@ public class Solution {
 
         // Problem 2
         dataset = new AnalyzedRequestlogDataSet(spark, dataset);
-        File analysisFile = new File("tmp/data/Analysis.csv/");
+        File analysisFile = new File("/tmp/data/Analysis.csv/");
         if (analysisFile.exists()) {
             FileUtils.deleteDirectory(analysisFile);
         }
