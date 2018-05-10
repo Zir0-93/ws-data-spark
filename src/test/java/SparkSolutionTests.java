@@ -4,6 +4,7 @@ import org.apache.spark.sql.SparkSession;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -15,7 +16,7 @@ public class SparkSolutionTests {
             .master("local")
             .getOrCreate();
     @Test
-    public void cleanTest() {
+    public void cleanTest() throws IOException {
         File cleanupData = new File(getClass().getResource("DataSample.csv").getFile());
         assertTrue(
                 new CleanedRequestLogDataSet(
@@ -25,7 +26,7 @@ public class SparkSolutionTests {
     }
 
     @Test
-    public void labelTest() {
+    public void labelTest() throws Exception {
         File cleanupData = new File(getClass().getResource("DataSample.csv").getFile());
         File poiData = new File(getClass().getResource("POIList.csv").getFile());
  assertTrue(new LabelledRequestLogDataSet(spark, new CleanedRequestLogDataSet(
@@ -34,7 +35,7 @@ public class SparkSolutionTests {
     }
 
     @Test
-    public void analysisTest() {
+    public void analysisTest() throws Exception {
         File cleanupData = new File(getClass().getResource("DataSample.csv").getFile());
         File poiData = new File(getClass().getResource("POIList.csv").getFile());
         assertTrue(new AnalyzedRequestlogDataSet(spark, new LabelledRequestLogDataSet(spark, new CleanedRequestLogDataSet(
