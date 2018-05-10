@@ -8,12 +8,12 @@ import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructType;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 
 import static org.apache.spark.sql.functions.callUDF;
 import static org.apache.spark.sql.functions.col;
 import static org.apache.spark.sql.functions.min;
+
 
 public class LabelledRequestLogDataSet implements RequestLogDataSet, Serializable {
 
@@ -39,6 +39,10 @@ public class LabelledRequestLogDataSet implements RequestLogDataSet, Serializabl
                 .schema(poiDataSchema)
                 .option("mode", "DROPMALFORMED")
                 .csv(poiDataFile.getCanonicalPath())
+                //.drop("Latitude", "Longitude")
+                /** I am going to treat two POI's with the same coordinates as separate entities, even though the
+                 coordinates are very accurate.
+                 */
                 .cache();
 
         sparkSession.sqlContext().udf().register("haversine", (UDF4<Double, Double, Double, Double, Double>)
