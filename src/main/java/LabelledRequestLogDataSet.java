@@ -39,7 +39,7 @@ public class LabelledRequestLogDataSet implements RequestLogDataSet, Serializabl
                 .schema(poiDataSchema)
                 .option("mode", "DROPMALFORMED")
                 .csv(poiDataFile.getCanonicalPath())
-                //.drop("Latitude", "Longitude")
+                //.dropDuplicates("Latitude", "Longitude")
                 /** I am going to treat two POI's with the same coordinates as separate entities, even though the
                  coordinates are very accurate.
                  */
